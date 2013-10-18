@@ -500,7 +500,7 @@ class OSM(callbacks.Plugin):
             return
 
         try:
-            xml = urllib2.urlopen('%s/api/0.6/node/%d' % (baseUrl, node_id))
+            xml = urllib2.urlopen('%s/api/0.6/nodes?nodes=%d' % (baseUrl, node_id))
         except urllib2.HTTPError as e:
             if e.code == 410:
                 last_mod = datetime.datetime.strptime(e.headers.get('Last-Modified'), '%a, %d %b %Y %H:%M:%S %Z')
@@ -555,7 +555,7 @@ class OSM(callbacks.Plugin):
             return
 
         try:
-            xml = urllib2.urlopen('%s/api/0.6/way/%d' % (baseUrl, way_id))
+            xml = urllib2.urlopen('%s/api/0.6/ways?ways=%d' % (baseUrl, way_id))
         except urllib2.HTTPError as e:
             if e.code == 410:
                 last_mod = datetime.datetime.strptime(e.headers.get('Last-Modified'), '%a, %d %b %Y %H:%M:%S %Z')
@@ -613,7 +613,7 @@ class OSM(callbacks.Plugin):
             return
 
         try:
-            xml = urllib2.urlopen('%s/api/0.6/relation/%d' % (baseUrl, relation_id))
+            xml = urllib2.urlopen('%s/api/0.6/relations?relations=%d' % (baseUrl, relation_id))
         except urllib2.HTTPError as e:
             if e.code == 410:
                 last_mod = datetime.datetime.strptime(e.headers.get('Last-Modified'), '%a, %d %b %Y %H:%M:%S %Z')
